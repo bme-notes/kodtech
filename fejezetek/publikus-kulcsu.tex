@@ -1,0 +1,17 @@
+\section{Publikus kulcsú rejtjelezés }
+dia 2.
+
+\subsection{RSA} %TODO Normális példát írni rá
+
+	\begin{enumerate}
+		\item Véletlenszerűen 2 prímszám választása: $p_1,p_2$
+		\item $m = p_1 \cdot p_2$\quad $ \Gorog{ \varphi }(m) = (p_1-1)(p_2-1)$\\[2pt]
+		Választott $e\ : 1\leq e \leq \varphi(m) \ \land \ (\varphi(m),e) = 1$
+		\item $d = e^{-1} \ mod \ \varphi(m) \ \Longrightarrow d\cdot e = 1 \ mod \ \varphi(m)$
+		\item $k^p = (m,e) \quad k^s = (d,p_1,p_2) $
+	\end{enumerate}
+
+	Kódolás:\quad $y = x^e \ mod\ m \quad 1 \leq x < m$\\[2pt]
+	Dekódolás:\quad $x = y^d \ mod\ m \quad 1 \leq y < m$
+
+	%TODO Esetleg RSA Biztonságát ideírni

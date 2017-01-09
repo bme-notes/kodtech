@@ -1,0 +1,27 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    packages:
+    - texlive-xetex
+    - texlive-latex-extra
+    - lmodern
+    - texlive-latex-recommended
+    - xzdec
+    - texlive-fonts-recommended
+script:
+- tlmgr init-usertree
+- tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
+- tlmgr update --all
+- tlmgr install etoolbox tcolorbox framed polyglossia hyperref pgf xcolor
+- xelatex szofttech.tex
+- xelatex szofttech.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: J1G+IUSqktNwK4nmIu1uNBzY48KsB7Tp2DXgDwJFJgLt8nsgnPAGFxzEaCJIy9Tq5nOhgfkiK9/qTrrYx4LPJ22T0qUo85UndcJSzBJfjCtSqIW+r5StFAU23P5v7VusJeza29C4lBMVmO4Po7bcNerUVP0I65HHIC/Ejxey1ZPvgmj3KgU1/Z4DGZL4zJF/UJvUwl6Kd4xlDSUqniDjLytwtbYBDi6ihgQe6LFIkj6J0mWZpnyBIwms/yGd2wvKydnEA933U/nAlW7gR27p8gmz36ZpUDgD5qMqr/PEsBTS1KAAr4hrV5yNOjYQnY4N5TNTaAOe+T+10wkvpHpcwDYf2OGPJhwvhnknCQQg3XUjhvup9f+yNaZFSWmkLaj2HegV7JBEXkFu6qyB5sKgsEhHxtW4betvGFqHNwJz2KG7A24Ml5LdmR3M9CVSPSeU+AmRRBucXjN8JT2i6qaWSs9GoFQ/dRB2U4beYwDNfRswQHE7Qqo9HV/FxgGFu3S2ACHETri5Lf+oaE7DzY6CtaWKpdwwTlq+qSoB7BEXUptHI+V2fkeO3eEWPyvpPpSDpTVV7zXDNEb6mmIojexNyOKH++T3hIZKimOsFm8A46PYBHv+ozaRBtFr1vFfjIWrNEyTiXeqMJYfteCZdkjgZn2lp0qYFP462R8trkbUEwc=
+  file: kodtech.pdf
+  skip-cleanup: true
+  overwrite: true
+  on:
+    repo: bme-notes/kodtech
